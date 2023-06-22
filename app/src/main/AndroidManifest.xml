@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" >
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/seeker"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AttendanceSeeker"
+        tools:targetApi="31" >
+        <activity
+            android:name=".Absentyoucantake"
+            android:exported="false"
+            android:label="@string/title_activity_absentyoucantake"
+            android:theme="@style/Theme.AttendanceSeeker" />
+        <activity
+            android:name=".ToCoverAttendance"
+            android:exported="false"
+            android:label="@string/title_activity_to_cover_attendance"
+            android:theme="@style/Theme.AttendanceSeeker" />
+        <activity
+            android:name=".AttendanceAfterNabsents"
+            android:exported="false"
+            android:label="@string/title_activity_attendance_after_nabsents"
+            android:theme="@style/Theme.AttendanceSeeker" />
+        <activity
+            android:name=".AttendenceAfterNdays"
+            android:exported="false"
+            android:label="@string/title_activity_attendence_after_ndays"
+            android:theme="@style/Theme.AttendanceSeeker" />
+        <activity
+            android:name=".Options"
+            android:exported="false"
+            android:label="@string/title_activity_options"
+            android:theme="@style/Theme.AttendanceSeeker" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AttendanceSeeker" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

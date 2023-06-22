@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Attendance Seeker</string>
+    <string name="title_activity_options">Options</string>
+    <string name="title_activity_attendence_after_ndays">AttendenceAfterNdays</string>
+    <string name="title_activity_attendance_after_nabsents">AttendanceAfterNabsents</string>
+    <string name="title_activity_to_cover_attendance">ToCoverAttendance</string>
+    <string name="title_activity_absentyoucantake">Absentyoucantake</string>
+</resources>
