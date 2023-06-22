@@ -25,9 +25,14 @@ Attendance Seeker is an Android application built using Kotlin and Jetpack Compo
 
 ## Screenshots
 
-| Screenshot 1 | Screenshot 2 | Screenshot 3 | Screenshot 3 | Screenshot 3 |
+| Screenshot 1 | Screenshot 2 | Screenshot 3 | Screenshot 4 | Screenshot 5 |
 |--------------|--------------|--------------|--------------|--------------|
 | ![Screenshot 1](Images/1.jpg) | ![Screenshot 2](Images/2.jpg) | ![Screenshot 3](Images/3.jpg) | ![Screenshot 4](Images/4.jpg) | ![Screenshot 5](Images/5.jpg) |
+
+| Screenshot 6 | Screenshot 7 |
+|--------------|--------------|
+| ![Screenshot 6](Images/6.jpg) | ![Screenshot 7](Images/7.jpg) |
+
 
 
 ## About the Project
