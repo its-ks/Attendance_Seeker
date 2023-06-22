@@ -35,7 +35,7 @@ Attendance Seeker is designed to simplify attendance management for students, pr
 
 | Screenshot 1 | Screenshot 2 | Screenshot 3 | Screenshot 4 |
 |--------------|--------------|--------------|--------------|
-| ![Screenshot 1](Images/1.jpg) | ![Screenshot 2](Images/2.jpg) | ![Screenshot 3](Images/3.jpg) | ![Screenshot 4](Images/4.jpg) |
+| <img src="Images/1.jpg" alt="Screenshot 1" width="300" height="600"/> | ![Screenshot 2](Images/2.jpg) | ![Screenshot 3](Images/3.jpg) | ![Screenshot 4](Images/4.jpg) |
 
 | Screenshot 5 | Screenshot 6 | Screenshot 7 |
 |--------------|--------------|--------------|
@@ -46,7 +46,6 @@ Attendance Seeker is designed to simplify attendance management for students, pr
 
 - Kotlin
 - Jetpack Compose
-- UI/UX
 
 ## Getting Started
 
