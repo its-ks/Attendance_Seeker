@@ -5,15 +5,15 @@
 <br />
 <div align="center">
   <a href="https://github.com/its-ks/Attendance_Seeker">
-    <img src="Images\logo.png" alt="Logo" width="80" height="80">
+    <img src="Images\logo.png" alt="Logo" width="150" height="150">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">Attendance Seeker</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    Solve every query related to your Attendance!
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/its-ks/Attendance_Seeker"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
