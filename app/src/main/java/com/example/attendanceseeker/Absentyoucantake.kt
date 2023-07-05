@@ -55,7 +55,7 @@ fun Greeting4(context: Context?=null) {
     val Totallec = remember { mutableStateOf("") }
     val Percent = remember { mutableStateOf("") }
     val Absent = remember { mutableStateOf("") }
-    val Delegation = remember { mutableStateOf("") }
+    val Delegation = remember { mutableStateOf("0") }
     var boxVisible = remember { mutableStateOf(false) }
     var anslec = remember { mutableStateOf(0f) }
     var current = remember { mutableStateOf(0f) }
@@ -129,6 +129,9 @@ fun Greeting4(context: Context?=null) {
                         keyboardType = KeyboardType.Number
                     ),
                     shape = RoundedCornerShape(15.dp),
+                    singleLine = true,
+                    maxLines = 1
+
                 )
 
                 Row(verticalAlignment = Alignment.Bottom)
@@ -153,6 +156,8 @@ fun Greeting4(context: Context?=null) {
                             keyboardType = KeyboardType.Number
                         ),
                         shape = RoundedCornerShape(15.dp),
+                        singleLine = true,
+                        maxLines = 1
                     )
                     Box(
                         modifier = Modifier
@@ -161,41 +166,41 @@ fun Greeting4(context: Context?=null) {
                                 border = BorderStroke(1.dp, Color.Gray),
                                 shape = RoundedCornerShape(15.dp)
                             ),
-                                contentAlignment = Alignment.BottomEnd
+                        contentAlignment = Alignment.BottomEnd
                     ) {
-                    Column(
-                        verticalArrangement = Arrangement.Bottom,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(start = 10.dp,top = 5.dp, bottom = 5.dp)
-                            .height(47.dp)
-                    ){
-                        Text(
-                            text = "Curr. Attend.",
-                            fontSize= 13.sp,
-                            style = MaterialTheme.typography.body1,
-                            color = MaterialTheme.colors.onSurface
-                        )
+                        Column(
+                            verticalArrangement = Arrangement.Bottom,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 10.dp,top = 5.dp, bottom = 5.dp)
+                                .height(47.dp)
+                        ){
+                            Text(
+                                text = "Curr. Attend.",
+                                fontSize= 13.sp,
+                                style = MaterialTheme.typography.body1,
+                                color = MaterialTheme.colors.onSurface
+                            )
 
-                        if(currAccess.value==true){
-                            Text(
-                                text = "${current.value}%",
-                                fontSize= 20.sp,
-                                style = MaterialTheme.typography.body1,
-                                fontWeight = FontWeight.Bold,
-                                color = Color.Black
-                            )
-                        }
-                        else{
-                            Text(
-                                text = "0.0%",
-                                fontSize= 20.sp,
-                                style = MaterialTheme.typography.body1,
-                                fontWeight = FontWeight.Bold,
-                                color = Color.Black
-                            )
-                        }
-                    }}
+                            if(currAccess.value==true){
+                                Text(
+                                    text = "${current.value}%",
+                                    fontSize= 20.sp,
+                                    style = MaterialTheme.typography.body1,
+                                    fontWeight = FontWeight.Bold,
+                                    color = Color.Black
+                                )
+                            }
+                            else{
+                                Text(
+                                    text = "0.0%",
+                                    fontSize= 20.sp,
+                                    style = MaterialTheme.typography.body1,
+                                    fontWeight = FontWeight.Bold,
+                                    color = Color.Black
+                                )
+                            }
+                        }}
 
 
                 }
@@ -219,6 +224,8 @@ fun Greeting4(context: Context?=null) {
                         keyboardType = KeyboardType.Number
                     ),
                     shape = RoundedCornerShape(15.dp),
+                    singleLine = true,
+                    maxLines = 1
                 )
                 OutlinedTextField(
                     value = Percent.value,
@@ -240,15 +247,23 @@ fun Greeting4(context: Context?=null) {
                         keyboardType = KeyboardType.Number
                     ),
                     shape = RoundedCornerShape(15.dp),
+                    singleLine = true,
+                    maxLines = 1
                 )
 
-
-
+                var attend = 0f
+                if(Percent.value.isEmpty()){
+                    attend=0f
+                }
 
                 var delegate = Delegation.value.toIntOrNull()
                 var lec = Totallec.value.toIntOrNull()
                 var absent = Absent.value.toIntOrNull()
-                var attend = Percent.value.toIntOrNull()
+
+                if(!Percent.value.isEmpty()){
+                    attend = Percent.value.toFloat()
+                }
+
 //                if(lec==null || absent==null || delegate==null){ current.value=}
                 OutlinedButton(
                     onClick = {
@@ -282,7 +297,7 @@ fun Greeting4(context: Context?=null) {
                         //.padding(8.dp)
                     )
                 }
-                if(delegate==null || lec==null || absent==null || attend==null)
+                if(delegate==null || lec==null || absent==null || attend==0f)
                 {
                     boxVisible.value=false
                 }
@@ -293,10 +308,10 @@ fun Greeting4(context: Context?=null) {
                 if(delegate==null){ delegate=0 }
                 if(lec==null){ lec=0 }
                 if(absent==null){ absent=0 }
-                if(attend==null){ attend=0 }
-                if(attend>100){ attend=0 }
 
+                if(attend>100){ attend=0f }
 
+8
 
 
 
@@ -318,13 +333,13 @@ fun Greeting4(context: Context?=null) {
                 div1.value = ((absent).toFloat() -(delegate*8).toFloat())/lec
                 div1.value = (100-((div1.value*100)).toFloat())
 
-                    if(boxVisible.value){
-                        if(attend<=div1.value){
+                if(boxVisible.value){
+                    if(attend<=div1.value){
 
-                            anslec.value = (((100-attend)*lec).toFloat()/100).toFloat()+(delegate*8)
+                        anslec.value = (((100-attend)*lec).toFloat()/100).toFloat()+(delegate*8)
 
-                            anslec.value=anslec.value-absent
-                            anslec1.value=anslec.value.toInt()
+                        anslec.value=anslec.value-absent
+                        anslec1.value=anslec.value.toInt()
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -349,41 +364,38 @@ fun Greeting4(context: Context?=null) {
                                     ansday.value = ceil(ansday.value)
                                     ansday1.value=ansday.value.toInt()
 
-                                Spacer(modifier = Modifier.height(8.dp).background(color = Color.Transparent))
-                                Text(
-                                    text = "You can take absent for ${ansday1.value} days.",
-                                    color = Color(0xFF000A13),
-                                    fontSize = 18.sp,
-                                    //fontWeight= FontWeight.Bold,
-                                    fontFamily = FontFamily.Serif,
-                                    textAlign = TextAlign.Center,
+                                    Spacer(modifier = Modifier.height(8.dp).background(color = Color.Transparent))
+                                    Text(
+                                        text = "You can take absent for ${ansday1.value} days.",
+                                        color = Color(0xFF000A13),
+                                        fontSize = 18.sp,
+                                        //fontWeight= FontWeight.Bold,
+                                        fontFamily = FontFamily.Serif,
+                                        textAlign = TextAlign.Center,
 
-                                    )}}}}
+                                        )
+                                }
+                            }
+                        }
+                    }
 
 
 
                     else{
                         Toast.makeText(context,"Enter Attendance less than current Attendance !",Toast.LENGTH_SHORT).show()
-                            boxVisible.value=false
+                        boxVisible.value=false
 
                     }
-                }}
-
-
-
-
-
-
-
-
+                }
             }
-
-
-
         }
 
 
+
     }
+
+
+}
 
 
 @Preview(showBackground = true)

@@ -52,7 +52,7 @@ fun Greeting2(context: Context? =null) {
     var Totallec = remember { mutableStateOf("") }
     var Days = remember { mutableStateOf("") }
     var TotalAbsent = remember { mutableStateOf("") }
-    var Delegation = remember { mutableStateOf("") }
+    var Delegation = remember { mutableStateOf("0") }
     var boxVisible = remember { mutableStateOf(false) }
     var ans = remember { mutableStateOf(0f) }
     var firstOption = remember { mutableStateOf(true) }
@@ -112,6 +112,8 @@ fun Greeting2(context: Context? =null) {
                         keyboardType = KeyboardType.Number
                     ),
                     shape = RoundedCornerShape(15.dp),
+                    singleLine = true,
+                    maxLines = 1
                 )
 
                 OutlinedTextField(
@@ -134,6 +136,8 @@ fun Greeting2(context: Context? =null) {
                         keyboardType = KeyboardType.Number
                     ),
                     shape = RoundedCornerShape(15.dp),
+                    singleLine = true,
+                    maxLines = 1
                 )
                 OutlinedTextField(
                     value = Delegation.value,
@@ -155,6 +159,8 @@ fun Greeting2(context: Context? =null) {
                         keyboardType = KeyboardType.Number
                     ),
                     shape = RoundedCornerShape(15.dp),
+                    singleLine = true,
+                    maxLines = 1
                 )
                 Column(
                     Modifier
@@ -224,6 +230,8 @@ fun Greeting2(context: Context? =null) {
                                 keyboardType = KeyboardType.Number
                             ),
                             shape = RoundedCornerShape(15.dp),
+                            singleLine = true,
+                            maxLines = 1
                         )
                         absentMode.value=true
                     }
@@ -248,6 +256,8 @@ fun Greeting2(context: Context? =null) {
                                 keyboardType = KeyboardType.Number
                             ),
                             shape = RoundedCornerShape(15.dp),
+                            singleLine = true,
+                            maxLines = 1
                         )
                         absentMode.value=false
 
@@ -328,7 +338,7 @@ fun Greeting2(context: Context? =null) {
                     mutableStateOf(0f)
                 }
 
-                div.value = (totabsent.toFloat() -(delegate).toFloat())/(lec+totabsent)
+                div.value = (totabsent.toFloat() -(delegate).toFloat())/(lec)
                 ans.value = (100-((div.value*100)).toFloat()).toFloat()
 
                 if(boxVisible.value){

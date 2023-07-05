@@ -54,7 +54,7 @@ fun Greeting3(context: Context? =null) {
     val Totallec = remember { mutableStateOf("") }
     val Percent = remember { mutableStateOf("") }
     val Absent = remember { mutableStateOf("") }
-    val Delegation = remember { mutableStateOf("") }
+    val Delegation = remember { mutableStateOf("0") }
     var boxVisible = remember { mutableStateOf(false) }
     var anslec = remember { mutableStateOf(0f) }
     var ansday = remember { mutableStateOf(0f) }
@@ -126,6 +126,8 @@ fun Greeting3(context: Context? =null) {
                         keyboardType = KeyboardType.Number
                     ),
                     shape = RoundedCornerShape(15.dp),
+                    singleLine = true,
+                    maxLines = 1
                 )
                 Row(verticalAlignment = Alignment.Bottom)
                 {
@@ -149,6 +151,8 @@ fun Greeting3(context: Context? =null) {
                             keyboardType = KeyboardType.Number
                         ),
                         shape = RoundedCornerShape(15.dp),
+                        singleLine = true,
+                        maxLines = 1
                     )
                     Box(
                         modifier = Modifier
@@ -213,6 +217,8 @@ fun Greeting3(context: Context? =null) {
                         keyboardType = KeyboardType.Number
                     ),
                     shape = RoundedCornerShape(15.dp),
+                    singleLine = true,
+                    maxLines = 1
                 )
 
                 OutlinedTextField(
@@ -235,6 +241,8 @@ fun Greeting3(context: Context? =null) {
                         keyboardType = KeyboardType.Number
                     ),
                     shape = RoundedCornerShape(15.dp),
+                    singleLine = true,
+                    maxLines = 1
                 )
 
 
@@ -308,12 +316,9 @@ fun Greeting3(context: Context? =null) {
 
 
                 anslec.value = (((absent-delegate).toFloat()/(100-attend).toFloat()).toFloat())*100
-
                 anslec.value=anslec.value-lec
-
                 ansday.value = (anslec.value/8)
-
-                ansday.value = floor(ansday.value)
+                ansday.value = ceil(ansday.value)
 
                 var anslec1 = remember { mutableStateOf(0) }
                 var ansday1 = remember { mutableStateOf(0) }
@@ -322,6 +327,7 @@ fun Greeting3(context: Context? =null) {
                 ansday1.value= ansday.value.toInt()
 
                 if(boxVisible.value){
+                    if(current.value<attend){
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -333,7 +339,7 @@ fun Greeting3(context: Context? =null) {
 
 
                                 Text(
-                                    text = "Lectures you need to attend - ${anslec1.value}",
+                                    text = "You need to attend ${anslec1.value} Lectures.",
                                     //text = "${ans.value} %",
                                     color = Color(0xFF000A13),
                                     fontSize = 18.sp,
@@ -345,14 +351,21 @@ fun Greeting3(context: Context? =null) {
                                     .height(8.dp)
                                     .background(color = Color.Transparent))
                                 Text(
-                                    text = "Days you need to come - ${ansday1.value}",
+                                    text = "You need to come ${ansday1.value} days.",
                                     color = Color(0xFF000A13),
                                     fontSize = 18.sp,
                                     //fontWeight= FontWeight.Bold,
                                     fontFamily = FontFamily.Serif,
                                     textAlign = TextAlign.Center,
 
-                                    )}}}
+                                    )}
+                    }
+                    }
+                    else{
+                        Toast.makeText(context,"Enter Attendance more than current Attendance !",Toast.LENGTH_SHORT).show()
+                        boxVisible.value=false
+                    }
+                }
 
                     }
 

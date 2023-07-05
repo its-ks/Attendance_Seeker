@@ -58,7 +58,7 @@ fun Greeting(context: Context? =null) {
     val Totallec = remember { mutableStateOf("") }
     val Days = remember { mutableStateOf("") }
     val Absent = remember { mutableStateOf("") }
-    val Delegation = remember { mutableStateOf("") }
+    val Delegation = remember { mutableStateOf("0") }
     var boxVisible = remember { mutableStateOf(false) }
     var ans = remember { mutableStateOf(0f) }
     var firstOption = remember { mutableStateOf(true) }
@@ -88,8 +88,9 @@ fun Greeting(context: Context? =null) {
             Column(
                 horizontalAlignment= Alignment.CenterHorizontally
             ){
+
                 Text(
-                    text = "Attendance After n Days/Lectures",
+                    text = "Attendance After n Lectures/Days",
                     color = Color(0xff001a39),
                     fontSize = 17.sp,
                     //fontStyle = FontStyle.Italic,
@@ -98,6 +99,8 @@ fun Greeting(context: Context? =null) {
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(10.dp)
                 )
+
+
                 OutlinedTextField(
                     value = Totallec.value,
 
@@ -118,6 +121,8 @@ fun Greeting(context: Context? =null) {
                         keyboardType = KeyboardType.Number
                     ),
                     shape = RoundedCornerShape(15.dp),
+                    singleLine = true,
+                    maxLines = 1
                 )
                 OutlinedTextField(
                     value = Absent.value,
@@ -139,6 +144,8 @@ fun Greeting(context: Context? =null) {
                         keyboardType = KeyboardType.Number
                     ),
                     shape = RoundedCornerShape(15.dp),
+                    singleLine = true,
+                    maxLines = 1
                 )
 
                 OutlinedTextField(
@@ -160,6 +167,8 @@ fun Greeting(context: Context? =null) {
                         keyboardType = KeyboardType.Number
                     ),
                     shape = RoundedCornerShape(15.dp),
+                    singleLine = true,
+                    maxLines = 1
                 )
                 Column(
                     Modifier
@@ -229,6 +238,8 @@ fun Greeting(context: Context? =null) {
                                 keyboardType = KeyboardType.Number
                             ),
                             shape = RoundedCornerShape(15.dp),
+                            singleLine = true,
+                            maxLines = 1
                         )
                         Mode.value=true
                     }
@@ -253,6 +264,8 @@ fun Greeting(context: Context? =null) {
                                 keyboardType = KeyboardType.Number
                             ),
                             shape = RoundedCornerShape(15.dp),
+                            singleLine = true,
+                            maxLines = 1,
                         )
                         Mode.value=false
 
